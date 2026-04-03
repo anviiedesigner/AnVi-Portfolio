@@ -102,15 +102,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .project-card__title{font-family:var(--font-display);font-size:1.375rem;font-weight:600;color:var(--espresso);margin-bottom:.25rem}
 .project-card__category{font-size:.75rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase}
 
-/* RETOUCHING */
-.retouching{background:var(--espresso);color:var(--cream);position:relative;overflow:hidden}
-.retouching .section__eyebrow{color:var(--accent-light)}.retouching .section__title{color:var(--cream)}.retouching .section__desc{color:var(--sand)}
-.retouching__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:3rem}
-.retouch-item{position:relative;overflow:hidden;aspect-ratio:3/2;cursor:pointer}
-.retouch-item .placeholder-img{width:100%;height:100%;object-fit:cover}
-.retouch-item__label{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(to top,rgba(43,33,24,.8),transparent);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateY(8px);transition:all .4s var(--ease-out-expo)}
-.retouch-item:hover .retouch-item__label{opacity:1;transform:translateY(0)}
-
 /* CONTACT */
 .contact{background:var(--off-white);text-align:center;padding:6rem 2rem}
 .contact__title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--espresso);margin-bottom:1rem}
@@ -183,7 +174,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 /* RESPONSIVE */
 @media(max-width:900px){.about__inner{grid-template-columns:1fr;gap:2rem}.projects__grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.modal__gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
-@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:85vw}.carousel--listing .carousel__item{width:min(300px,80vw)}}
+@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:85vw}.carousel--listing .carousel__item{width:min(300px,80vw)}}
 </style>
 </head>
 <body>
@@ -193,7 +184,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
   <div class="nav__links">
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
-    <a href="#retouching">Retouching</a>
     <a href="#contact">Contact</a>
   </div>
   <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -201,7 +191,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 <div class="mobile-menu" id="mobileMenu">
   <a href="#about" onclick="closeMenu()">About</a>
   <a href="#projects" onclick="closeMenu()">Projects</a>
-  <a href="#retouching" onclick="closeMenu()">Retouching</a>
   <a href="#contact" onclick="closeMenu()">Contact</a>
 </div>
 
@@ -255,15 +244,6 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       </div>
     </div>
     <div class="projects__grid" id="projectsGrid"></div>
-  </div>
-</section>
-
-<section class="section retouching" id="retouching">
-  <div class="container">
-    <p class="section__eyebrow reveal">Capabilities</p>
-    <h2 class="section__title reveal reveal-delay-1">Digital Retouching</h2>
-    <p class="section__desc reveal reveal-delay-2">Transforming raw product shots into polished, sales-ready visuals. From background compositing to lifestyle scene creation — no production required.</p>
-    <div class="retouching__grid" id="retouchGrid"></div>
   </div>
 </section>
 
@@ -473,12 +453,6 @@ const projects = [
   }
 ];
 
-const retouchItems=[
-  {label:'Product Compositing'},{label:'Background Replacement'},
-  {label:'Lifestyle Scene Creation'},{label:'Color & Tone Enhancement'},
-  {label:'Shadow & Reflection'},{label:'Before & After'}
-];
-
 // SVG icons
 const arrowL=`<svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const arrowR=`<svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
@@ -541,15 +515,6 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
     btn.classList.add('active');
     renderProjects(btn.dataset.filter);
   });
-});
-
-// Render retouching
-const rGrid=document.getElementById('retouchGrid');
-retouchItems.forEach((item,i)=>{
-  const el=document.createElement('div');
-  el.className=`retouch-item reveal reveal-delay-${Math.min(i%4+1,4)}`;
-  el.innerHTML=`<div class="placeholder-img" style="aspect-ratio:3/2">${item.label}</div><div class="retouch-item__label">${item.label}</div>`;
-  rGrid.appendChild(el);
 });
 
 // Modal
