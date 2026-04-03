@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anh Viet | Graphic Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES (Your Modern Pink/Red Palette) --- */
+        :root {
+            --bg-blush: #fdf8f9; /* Soft, modern background */
+            --text-burgundy: #8a2b43; /* High-contrast main text */
+            --accent-pink: #d17a8d; /* Lighter hover/accent color */
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(138, 43, 67, 0.08);
+            --transition: all 0.3s ease;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-blush);
+            color: var(--text-burgundy);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        a {
+            color: var(--text-burgundy);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--accent-pink);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- HERO SECTION --- */
+        header {
+            padding: 8rem 0 4rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 2rem auto;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- EXPERIENCE SECTION --- */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--text-burgundy);
+            margin: 1rem auto 0 auto;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 6rem;
+        }
+
+        .exp-card {
+            background-color: var(--white);
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+
+        .exp-card:hover {
+            transform: translateY(-5px);
+            border-top: 4px solid var(--accent-pink);
+        }
+
+        .exp-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--accent-pink);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- PROJECT GRID (The Portfolio) --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .project-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(138, 43, 67, 0.15);
+        }
+
+        .project-image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #f0e1e4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-style: italic;
+            color: var(--accent-pink);
+        }
+
+        /* Replace the placeholder div with an actual image tag when ready */
+        .project-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .project-info {
+            padding: 2rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-pink);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid rgba(138, 43, 67, 0.1);
+            margin-top: 4rem;
+        }
+
+        .thank-you {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact-info { flex-direction: column; gap: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Anh Viet</h1>
+            <p class="hero-subtitle">Graphic Designer based in Ho Chi Minh City, specializing in E-Commerce, Branding, and Spatial Visualization with 4 years of experience.</p>
+            <div class="contact-info">
+                <a href="mailto:anviie.designer@gmail.com">anviie.designer@gmail.com</a>
+                <a href="tel:+84785371189">+84 785 371 189</a>
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Experience</h2>
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <h3>Graphic Designer @ Scalecraft</h3>
+                    <span class="exp-date">March 2024 – Dec 2024</span>
+                    <p>Specialized in Amazon product listing design, collaborating directly with German clients to deliver designs optimized for boosting product sales.</p>
+                </div>
+                <div class="exp-card">
+                    <h3>Creative Designer @ Eureka</h3>
+                    <span class="exp-date">June 2023 – Dec 2023</span>
+                    <p>Created graphics and infographics for human anatomy, visual designs for the Centre's facade, and floorplans for interactive models.</p>
+                </div>
+                <div class="exp-card">
+                    <h3>Graphic Designer @ Fitis</h3>
+                    <span class="exp-date">May 2022 – May 2023</span>
+                    <p>Created marketing collateral, produced product content/photos, oversaw exhibit design for trade shows, and coordinated photoshoot concepts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Selected Works</h2>
+            <div class="portfolio-grid">
+                
+                <article class="project-card">
+                    <div class="project-image-placeholder">[ Insert Carbigo / Pritex Amazon Image Here ]</div>
+                    <div class="project-info">
+                        <span class="project-category">E-Commerce Design</span>
+                        <h3>Marketplace Optimization</h3>
+                        <p>High-quality product images for German Amazon, highlighting features to drive sales and meet strict platform guidelines.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image-placeholder">[ Insert Fitis Styling Image Here ]</div>
+                    <div class="project-info">
+                        <span class="project-category">Set Design & Styling</span>
+                        <h3>Fitis Brand Visualization</h3>
+                        <p>Developing creative concepts and detailed shot plans to visualize product photoshoots that achieve sales goals while staying true to brand identity.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image-placeholder">[ Insert Eureka Exhibition Image Here ]</div>
+                    <div class="project-info">
+                        <span class="project-category">Exhibition & Print</span>
+                        <h3>EUREKA Interactive Science</h3>
+                        <p>Developed the floor plan, placed interactive models, and designed all educational infographics for a large-scale kids' anatomy exhibition.</p>
+                    </div>
+                </article>
+
+                <article class="project-card">
+                    <div class="project-image-placeholder">[ Insert Dog's Love / Lucky-Kitty Image Here ]</div>
+                    <div class="project-info">
+                        <span class="project-category">Print Layout</span>
+                        <h3>Pet Care Catalogs</h3>
+                        <p>Detailed, clean layouts providing insights into products, ensuring consumers understand benefits, ingredients, and usage instructions.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <footer>
+            <div class="thank-you">thank you</div>
+            <p>Let's build something great together.</p>
+            <p style="margin-top: 1rem;"><a href="mailto:anviie.designer@gmail.com">anviie.designer@gmail.com</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
+
