@@ -1,301 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anh Viet | Graphic Designer</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
-    <style>
-        /* --- CSS VARIABLES (Your Modern Pink/Red Palette) --- */
-        :root {
-            --bg-blush: #fdf8f9; /* Soft, modern background */
-            --text-burgundy: #8a2b43; /* High-contrast main text */
-            --accent-pink: #d17a8d; /* Lighter hover/accent color */
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(138, 43, 67, 0.08);
-            --transition: all 0.3s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anh Viet — E-Commerce & Graphic Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --espresso:#2B2118;--dark-brown:#3C2A21;--mocha:#5C4033;
+  --taupe:#8B7D6B;--greige:#A89F91;--sand:#C4B8A8;
+  --cream:#E8E0D5;--off-white:#F5F0EB;--bone:#FAF8F5;--white:#FFFFFF;
+  --accent:#9C7B5C;--accent-light:#BFA88E;
+  --text-primary:#2B2118;--text-secondary:#5C4033;--text-muted:#8B7D6B;
+  --font-display:'Cormorant Garamond',Georgia,serif;
+  --font-body:'DM Sans',system-ui,sans-serif;
+  --ease-out-expo:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font-body);color:var(--text-primary);background:var(--bone);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
 
-        /* --- GLOBAL STYLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-blush);
-            color: var(--text-burgundy);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.25rem 2rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,backdrop-filter .4s,padding .4s}
+.nav.scrolled{background:rgba(245,240,235,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:.875rem 2rem;box-shadow:0 1px 0 rgba(43,33,24,.06)}
+.nav__logo{font-family:var(--font-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--espresso)}
+.nav__links{display:flex;gap:2rem;align-items:center}
+.nav__links a{font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-secondary);position:relative;transition:color .3s}
+.nav__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s var(--ease-out-expo)}
+.nav__links a:hover{color:var(--espresso)}.nav__links a:hover::after{width:100%}
+.nav__hamburger{display:none;flex-direction:column;gap:5px;width:24px;padding:4px 0}
+.nav__hamburger span{display:block;height:1.5px;background:var(--espresso);transition:transform .3s,opacity .3s;transform-origin:center}
+.nav__hamburger.active span:nth-child(1){transform:rotate(45deg) translate(4.5px,4.5px)}
+.nav__hamburger.active span:nth-child(2){opacity:0}
+.nav__hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(4.5px,-4.5px)}
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
+.mobile-menu{position:fixed;inset:0;z-index:999;background:rgba(245,240,235,.97);backdrop-filter:blur(30px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;opacity:0;pointer-events:none;transition:opacity .4s var(--ease-out-expo)}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:600;color:var(--text-secondary);transition:color .3s}
+.mobile-menu a:hover{color:var(--espresso)}
 
-        a {
-            color: var(--text-burgundy);
-            text-decoration: none;
-            transition: var(--transition);
-        }
+/* HERO */
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden;background:linear-gradient(160deg,var(--bone) 0%,var(--cream) 40%,var(--off-white) 100%)}
+.hero__content{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2}
+.hero__eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-bottom:1.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s var(--ease-out-expo) .2s forwards}
+.hero__title{font-family:var(--font-display);font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:.95;letter-spacing:-.03em;color:var(--espresso);margin-bottom:1.5rem;opacity:0;transform:translateY(30px);animation:fadeUp .8s var(--ease-out-expo) .4s forwards}
+.hero__title em{font-style:italic;color:var(--accent);display:inline-block}
+.hero__subtitle{font-size:clamp(1rem,2vw,1.25rem);line-height:1.6;color:var(--text-muted);max-width:520px;margin-bottom:2.5rem;opacity:0;transform:translateY(20px);animation:fadeUp .8s var(--ease-out-expo) .6s forwards}
+.hero__cta{display:inline-flex;align-items:center;gap:.75rem;padding:.875rem 2rem;background:var(--espresso);color:var(--cream);font-size:.8125rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;transition:all .4s var(--ease-out-expo);opacity:0;transform:translateY(20px);animation:fadeUp .8s var(--ease-out-expo) .8s forwards}
+.hero__cta:hover{background:var(--mocha);transform:translateY(-2px);box-shadow:0 8px 30px rgba(43,33,24,.15)}
+.hero__cta svg{transition:transform .3s}.hero__cta:hover svg{transform:translateX(4px)}
+.hero__scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeUp .8s var(--ease-out-expo) 1.2s forwards}
+.hero__scroll span{font-size:.6875rem;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe)}
+.hero__scroll-line{width:1px;height:40px;background:var(--sand);position:relative;overflow:hidden}
+.hero__scroll-line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--accent);animation:scrollLine 2s ease infinite}
+.hero__deco{position:absolute;right:-5%;top:15%;width:clamp(300px,40vw,600px);height:clamp(300px,40vw,600px);border-radius:50%;border:1px solid var(--sand);opacity:.4}
+.hero__deco::before{content:'';position:absolute;top:15%;left:15%;right:15%;bottom:15%;border-radius:50%;border:1px solid var(--sand)}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+@keyframes scrollLine{0%{top:-100%}50%{top:100%}100%{top:100%}}
 
-        a:hover {
-            color: var(--accent-pink);
-        }
+/* SECTIONS */
+.section{padding:6rem 2rem}
+.section__eyebrow{font-size:.75rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-bottom:1rem}
+.section__title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--espresso);margin-bottom:1rem}
+.section__desc{font-size:1rem;line-height:1.7;color:var(--text-muted);max-width:560px}
+.container{max-width:1200px;margin:0 auto}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+/* ABOUT */
+.about{background:var(--off-white)}
+.about__inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about__stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem}
+.stat{padding:1.5rem 0;border-top:1px solid var(--sand)}
+.stat__number{font-family:var(--font-display);font-size:2.5rem;font-weight:700;color:var(--espresso);line-height:1;margin-bottom:.25rem}
+.stat__label{font-size:.8125rem;color:var(--text-muted);letter-spacing:.02em}
+.about__tools{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.tool-tag{padding:.375rem .875rem;background:var(--cream);font-size:.75rem;font-weight:500;color:var(--text-secondary);letter-spacing:.04em;border:1px solid var(--sand)}
+.about__quote{font-family:var(--font-display);font-size:1.75rem;font-weight:400;font-style:italic;line-height:1.4;color:var(--mocha);padding:2rem;border-left:2px solid var(--accent);background:var(--cream)}
 
-        /* --- HERO SECTION --- */
-        header {
-            padding: 8rem 0 4rem 0;
-            text-align: center;
-        }
+/* PROJECTS */
+.projects{background:var(--bone)}
+.projects__header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
+.projects__filter{display:flex;gap:.5rem;flex-wrap:wrap}
+.filter-btn{padding:.5rem 1rem;font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);border:1px solid transparent;transition:all .3s}
+.filter-btn:hover,.filter-btn.active{color:var(--espresso);border-color:var(--espresso)}
+.projects__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
+.project-card{position:relative;overflow:hidden;cursor:pointer;background:var(--cream);transition:transform .5s var(--ease-out-expo),box-shadow .5s var(--ease-out-expo)}
+.project-card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(43,33,24,.1)}
+.project-card__img{width:100%;aspect-ratio:4/3;overflow:hidden;position:relative}
+.project-card__img img,.project-card__img .placeholder-img{width:100%;height:100%;object-fit:cover}
+.project-card__img img{transition:transform .6s var(--ease-out-expo)}
+.project-card:hover .project-card__img img{transform:scale(1.05)}
+.project-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,33,24,.7) 0%,transparent 50%);opacity:0;transition:opacity .4s;display:flex;align-items:flex-end;padding:1.5rem}
+.project-card:hover .project-card__overlay{opacity:1}
+.project-card__overlay span{font-size:.75rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--cream)}
+.project-card__info{padding:1.25rem 1.5rem}
+.project-card__title{font-family:var(--font-display);font-size:1.375rem;font-weight:600;color:var(--espresso);margin-bottom:.25rem}
+.project-card__category{font-size:.75rem;color:var(--text-muted);letter-spacing:.06em;text-transform:uppercase}
 
-        header h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            letter-spacing: -1px;
-        }
+/* RETOUCHING */
+.retouching{background:var(--espresso);color:var(--cream);position:relative;overflow:hidden}
+.retouching .section__eyebrow{color:var(--accent-light)}.retouching .section__title{color:var(--cream)}.retouching .section__desc{color:var(--sand)}
+.retouching__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;margin-top:3rem}
+.retouch-item{position:relative;overflow:hidden;aspect-ratio:3/2;cursor:pointer}
+.retouch-item .placeholder-img{width:100%;height:100%;object-fit:cover}
+.retouch-item__label{position:absolute;bottom:0;left:0;right:0;padding:1rem;background:linear-gradient(to top,rgba(43,33,24,.8),transparent);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:0;transform:translateY(8px);transition:all .4s var(--ease-out-expo)}
+.retouch-item:hover .retouch-item__label{opacity:1;transform:translateY(0)}
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto 2rem auto;
-        }
+/* CONTACT */
+.contact{background:var(--off-white);text-align:center;padding:6rem 2rem}
+.contact__title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:var(--espresso);margin-bottom:1rem}
+.contact__subtitle{font-size:1rem;color:var(--text-muted);margin-bottom:3rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.6}
+.contact__links{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap}
+.contact__link{display:flex;align-items:center;gap:.75rem;padding:1rem 2rem;border:1px solid var(--sand);transition:all .3s var(--ease-out-expo);font-size:.875rem;color:var(--text-secondary)}
+.contact__link:hover{border-color:var(--espresso);background:var(--espresso);color:var(--cream);transform:translateY(-2px);box-shadow:0 8px 24px rgba(43,33,24,.12)}
+.contact__link svg{width:18px;height:18px;flex-shrink:0}
+.footer{padding:2rem;text-align:center;font-size:.75rem;color:var(--taupe);letter-spacing:.05em;border-top:1px solid var(--sand);background:var(--bone)}
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:2000;background:rgba(43,33,24,.6);backdrop-filter:blur(8px);opacity:0;pointer-events:none;transition:opacity .4s var(--ease-out-expo);overflow-y:auto;display:flex;align-items:flex-start;justify-content:center;padding:2rem}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--bone);max-width:1000px;width:100%;position:relative;transform:translateY(40px);transition:transform .5s var(--ease-out-expo);margin:2rem auto}
+.modal-overlay.open .modal{transform:translateY(0)}
+.modal__close{position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--off-white);transition:background .3s;border-radius:50%}
+.modal__close:hover{background:var(--cream)}.modal__close svg{width:16px;height:16px;color:var(--espresso)}
+.modal__hero{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--cream)}
+.modal__hero .placeholder-img{width:100%;height:100%;object-fit:cover}
+.modal__body{padding:2.5rem}
+.modal__eyebrow{font-size:.6875rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:.75rem}
+.modal__title{font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:var(--espresso);margin-bottom:1rem}
+.modal__desc{font-size:.9375rem;line-height:1.7;color:var(--text-muted);margin-bottom:2rem;max-width:640px}
+.modal__tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2.5rem}
+.modal__tag{padding:.25rem .75rem;font-size:.6875rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--sand);color:var(--text-muted)}
 
-        /* --- EXPERIENCE SECTION --- */
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            position: relative;
-        }
+/* TABS */
+.modal__tabs{display:flex;gap:0;margin-bottom:2rem;border-bottom:1px solid var(--sand);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.modal__tabs::-webkit-scrollbar{display:none}
+.modal__tab{padding:.875rem 1.5rem;font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);border-bottom:2px solid transparent;transition:all .3s;margin-bottom:-1px;white-space:nowrap;flex-shrink:0}
+.modal__tab:hover{color:var(--text-secondary)}
+.modal__tab.active{color:var(--espresso);border-bottom-color:var(--espresso)}
+.modal__tab-content{display:none}.modal__tab-content.active{display:block}
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 2px;
-            background-color: var(--text-burgundy);
-            margin: 1rem auto 0 auto;
-        }
+/* CAROUSEL */
+.carousel{position:relative;overflow:hidden}
+.carousel__track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
+.carousel__track::-webkit-scrollbar{display:none}
+.carousel__item{flex:0 0 auto;scroll-snap-align:start;overflow:hidden;background:var(--cream)}
+.carousel__item .placeholder-img{width:100%;height:100%;object-fit:cover}
 
-        .experience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 6rem;
-        }
+.carousel--aplus .carousel__item{width:min(360px,80vw);aspect-ratio:9/16}
+.carousel--listing .carousel__item{width:min(300px,75vw);aspect-ratio:1/1}
+.carousel--brandstory .carousel__item{width:min(480px,88vw);aspect-ratio:16/9}
 
-        .exp-card {
-            background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border-top: 4px solid transparent;
-        }
+.carousel__nav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
+.carousel__arrows{display:flex;gap:.5rem}
+.carousel__arrow{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border:1px solid var(--sand);color:var(--text-muted);transition:all .3s}
+.carousel__arrow:hover{border-color:var(--espresso);color:var(--espresso);background:var(--cream)}
+.carousel__arrow svg{width:14px;height:14px}
+.carousel__hint{font-size:.6875rem;color:var(--taupe);letter-spacing:.05em;display:flex;align-items:center;gap:.375rem}
+.carousel__hint svg{width:14px;height:14px;opacity:.5}
 
-        .exp-card:hover {
-            transform: translateY(-5px);
-            border-top: 4px solid var(--accent-pink);
-        }
+.tab-section__label{font-size:.6875rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--taupe);margin-bottom:1rem;display:flex;align-items:center;gap:.75rem}
+.tab-section__label::after{content:'';flex:1;height:1px;background:var(--sand)}
 
-        .exp-card h3 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
+/* SIMPLE GALLERY */
+.modal__gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
+.modal__gallery-item{overflow:hidden;aspect-ratio:4/3;background:var(--cream)}
+.modal__gallery-item .placeholder-img{width:100%;height:100%;object-fit:cover}
 
-        .exp-date {
-            font-size: 0.85rem;
-            color: var(--accent-pink);
-            margin-bottom: 1rem;
-            display: block;
-        }
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-out-expo),transform .7s var(--ease-out-expo)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
 
-        /* --- PROJECT GRID (The Portfolio) --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin-bottom: 6rem;
-        }
+.placeholder-img{width:100%;height:100%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--taupe);letter-spacing:.1em;text-transform:uppercase;border:1px dashed var(--sand);text-align:center;padding:.5rem}
 
-        .project-card {
-            background-color: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(138, 43, 67, 0.15);
-        }
-
-        .project-image-placeholder {
-            width: 100%;
-            height: 300px;
-            background-color: #f0e1e4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-style: italic;
-            color: var(--accent-pink);
-        }
-
-        /* Replace the placeholder div with an actual image tag when ready */
-        .project-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-bottom: 1px solid #eee;
-        }
-
-        .project-info {
-            padding: 2rem;
-        }
-
-        .project-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .project-category {
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--accent-pink);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 4rem 0;
-            border-top: 1px solid rgba(138, 43, 67, 0.1);
-            margin-top: 4rem;
-        }
-
-        .thank-you {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.8rem; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .contact-info { flex-direction: column; gap: 0.5rem; }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:900px){.about__inner{grid-template-columns:1fr;gap:2rem}.projects__grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.modal__gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:min(260px,75vw)}.carousel--listing .carousel__item{width:min(240px,72vw)}.carousel--brandstory .carousel__item{width:min(300px,85vw)}}
+</style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Anh Viet</h1>
-            <p class="hero-subtitle">Graphic Designer based in Ho Chi Minh City, specializing in E-Commerce, Branding, and Spatial Visualization with 4 years of experience.</p>
-            <div class="contact-info">
-                <a href="mailto:anviie.designer@gmail.com">anviie.designer@gmail.com</a>
-                <a href="tel:+84785371189">+84 785 371 189</a>
-            </div>
-        </header>
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo">Anh Viet</a>
+  <div class="nav__links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#retouching">Retouching</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="nav__hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#retouching" onclick="closeMenu()">Retouching</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
 
-        <section>
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-grid">
-                <div class="exp-card">
-                    <h3>Graphic Designer @ Scalecraft</h3>
-                    <span class="exp-date">March 2024 – Dec 2024</span>
-                    <p>Specialized in Amazon product listing design, collaborating directly with German clients to deliver designs optimized for boosting product sales.</p>
-                </div>
-                <div class="exp-card">
-                    <h3>Creative Designer @ Eureka</h3>
-                    <span class="exp-date">June 2023 – Dec 2023</span>
-                    <p>Created graphics and infographics for human anatomy, visual designs for the Centre's facade, and floorplans for interactive models.</p>
-                </div>
-                <div class="exp-card">
-                    <h3>Graphic Designer @ Fitis</h3>
-                    <span class="exp-date">May 2022 – May 2023</span>
-                    <p>Created marketing collateral, produced product content/photos, oversaw exhibit design for trade shows, and coordinated photoshoot concepts.</p>
-                </div>
-            </div>
-        </section>
+<section class="hero">
+  <div class="hero__deco"></div>
+  <div class="hero__content">
+    <p class="hero__eyebrow">E-Commerce & Graphic Design</p>
+    <h1 class="hero__title">Designing<br>products that<br><em>sell.</em></h1>
+    <p class="hero__subtitle">Crafting high-converting product visuals for global e-commerce brands — from Amazon listings to brand identities.</p>
+    <a href="#projects" class="hero__cta">View Projects <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+  <div class="hero__scroll"><span>Scroll</span><div class="hero__scroll-line"></div></div>
+</section>
 
-        <section>
-            <h2 class="section-title">Selected Works</h2>
-            <div class="portfolio-grid">
-                
-                <article class="project-card">
-                    <div class="project-image-placeholder">[ Insert Carbigo / Pritex Amazon Image Here ]</div>
-                    <div class="project-info">
-                        <span class="project-category">E-Commerce Design</span>
-                        <h3>Marketplace Optimization</h3>
-                        <p>High-quality product images for German Amazon, highlighting features to drive sales and meet strict platform guidelines.</p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image-placeholder">[ Insert Fitis Styling Image Here ]</div>
-                    <div class="project-info">
-                        <span class="project-category">Set Design & Styling</span>
-                        <h3>Fitis Brand Visualization</h3>
-                        <p>Developing creative concepts and detailed shot plans to visualize product photoshoots that achieve sales goals while staying true to brand identity.</p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image-placeholder">[ Insert Eureka Exhibition Image Here ]</div>
-                    <div class="project-info">
-                        <span class="project-category">Exhibition & Print</span>
-                        <h3>EUREKA Interactive Science</h3>
-                        <p>Developed the floor plan, placed interactive models, and designed all educational infographics for a large-scale kids' anatomy exhibition.</p>
-                    </div>
-                </article>
-
-                <article class="project-card">
-                    <div class="project-image-placeholder">[ Insert Dog's Love / Lucky-Kitty Image Here ]</div>
-                    <div class="project-info">
-                        <span class="project-category">Print Layout</span>
-                        <h3>Pet Care Catalogs</h3>
-                        <p>Detailed, clean layouts providing insights into products, ensuring consumers understand benefits, ingredients, and usage instructions.</p>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <footer>
-            <div class="thank-you">thank you</div>
-            <p>Let's build something great together.</p>
-            <p style="margin-top: 1rem;"><a href="mailto:anviie.designer@gmail.com">anviie.designer@gmail.com</a></p>
-        </footer>
+<section class="section about" id="about">
+  <div class="container">
+    <div class="about__inner">
+      <div class="reveal">
+        <p class="section__eyebrow">About</p>
+        <h2 class="section__title">Anh Viet</h2>
+        <p class="section__desc">Graphic designer based in Ho Chi Minh City with 4+ years of experience in e-commerce and branding. With a background in Interior Design, I bring a sharp eye for composition and detail — creating designs that balance style and business goals.</p>
+        <div class="about__stats">
+          <div class="stat"><div class="stat__number" data-count="4">0</div><div class="stat__label">Years Experience</div></div>
+          <div class="stat"><div class="stat__number" data-count="9">0</div><div class="stat__label">Brand Projects</div></div>
+          <div class="stat"><div class="stat__number" data-count="50">0</div><div class="stat__label">Product Listings</div></div>
+          <div class="stat"><div class="stat__number" data-count="3">0</div><div class="stat__label">Countries Served</div></div>
+        </div>
+        <div class="about__tools">
+          <span class="tool-tag">Photoshop</span><span class="tool-tag">Illustrator</span><span class="tool-tag">InDesign</span><span class="tool-tag">Lightroom</span><span class="tool-tag">Photography</span><span class="tool-tag">Set Design</span>
+        </div>
+      </div>
+      <div class="about__visual reveal reveal-delay-2">
+        <div class="about__quote">"I don't just design images — I engineer every pixel to convert browsers into buyers."</div>
+      </div>
     </div>
+  </div>
+</section>
 
+<section class="section projects" id="projects">
+  <div class="container">
+    <div class="projects__header">
+      <div>
+        <p class="section__eyebrow reveal">Selected Work</p>
+        <h2 class="section__title reveal reveal-delay-1">Projects</h2>
+      </div>
+      <div class="projects__filter reveal reveal-delay-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+        <button class="filter-btn" data-filter="print">Print</button>
+        <button class="filter-btn" data-filter="exhibition">Exhibition</button>
+      </div>
+    </div>
+    <div class="projects__grid" id="projectsGrid"></div>
+  </div>
+</section>
+
+<section class="section retouching" id="retouching">
+  <div class="container">
+    <p class="section__eyebrow reveal">Capabilities</p>
+    <h2 class="section__title reveal reveal-delay-1">Digital Retouching</h2>
+    <p class="section__desc reveal reveal-delay-2">Transforming raw product shots into polished, sales-ready visuals. From background compositing to lifestyle scene creation — no production required.</p>
+    <div class="retouching__grid" id="retouchGrid"></div>
+  </div>
+</section>
+
+<section class="section contact" id="contact">
+  <div class="container">
+    <p class="section__eyebrow reveal">Get in Touch</p>
+    <h2 class="contact__title reveal reveal-delay-1">Let's work<br>together.</h2>
+    <p class="contact__subtitle reveal reveal-delay-2">Have a project in mind? I'd love to hear about it.</p>
+    <div class="contact__links reveal reveal-delay-3">
+      <a href="mailto:anviie.designer@gmail.com" class="contact__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>anviie.designer@gmail.com</a>
+      <a href="tel:+84785371189" class="contact__link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>+84 785 371 189</a>
+    </div>
+  </div>
+</section>
+<footer class="footer"><p>&copy; 2025 Anh Viet. All rights reserved.</p></footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modal">
+    <button class="modal__close" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="modal__hero" id="modalHero"></div>
+    <div class="modal__body">
+      <p class="modal__eyebrow" id="modalEyebrow"></p>
+      <h2 class="modal__title" id="modalTitle"></h2>
+      <p class="modal__desc" id="modalDesc"></p>
+      <div class="modal__tags" id="modalTags"></div>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const projects=[
+  {id:'safetyfurst',title:'Safety Furst',category:'ecommerce',categoryLabel:'E-Commerce · Pet Products',
+   desc:'Product listing design for a premium pet safety brand. Created high-impact Amazon images highlighting product features, durability, and lifestyle usage to drive conversions.',
+   tags:['Amazon','Product Listing','Lifestyle','Pet Industry'],cover:'assets/safetyfurst/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/safetyfurst/aplus-${i+1}.jpg`),
+   listing:Array.from({length:8},(_,i)=>`assets/safetyfurst/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/safetyfurst/brandstory-${i+1}.jpg`)},
+
+  {id:'facepalm',title:'Facepalm',category:'ecommerce',categoryLabel:'E-Commerce · Cosmetics',
+   desc:'Amazon storefront and product listing design for a natural skincare brand. Developed visual identity that communicates freshness and simplicity across all touchpoints.',
+   tags:['Amazon Storefront','Product Listing','Branding','Skincare'],cover:'assets/facepalm/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/facepalm/aplus-${i+1}.jpg`),
+   listing:Array.from({length:6},(_,i)=>`assets/facepalm/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/facepalm/brandstory-${i+1}.jpg`)},
+
+  {id:'carbigo',title:'Carbigo',category:'ecommerce',categoryLabel:'E-Commerce · Automotive',
+   desc:'Amazon product listing images for a German automotive paint pen brand. Dark, industrial aesthetic with clear feature callouts and before/after demonstrations.',
+   tags:['Amazon DE','Product Photography','Automotive','German Market'],cover:'assets/carbigo/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/carbigo/aplus-${i+1}.jpg`),
+   listing:Array.from({length:7},(_,i)=>`assets/carbigo/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/carbigo/brandstory-${i+1}.jpg`)},
+
+  {id:'pritex',title:'Pritex',category:'ecommerce',categoryLabel:'E-Commerce · Industrial Tools',
+   desc:'Bold, high-contrast product listing design for a professional-grade foam gun brand. Emphasized rugged construction and versatility through dynamic compositions.',
+   tags:['Amazon DE','Industrial','Product Listing','Bold Design'],cover:'assets/pritex/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/pritex/aplus-${i+1}.jpg`),
+   listing:Array.from({length:6},(_,i)=>`assets/pritex/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/pritex/brandstory-${i+1}.jpg`)},
+
+  {id:'mijuwi',title:'Mijuwi',category:'ecommerce',categoryLabel:'E-Commerce · Beverages',
+   desc:'Fresh, vibrant product visuals for a sugar-free syrup brand. Transformed product images to appear realistic while highlighting practical use and lifestyle appeal.',
+   tags:['Website','Product Images','Lifestyle','Food & Beverage'],cover:'assets/mijuwi/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/mijuwi/aplus-${i+1}.jpg`),
+   listing:Array.from({length:6},(_,i)=>`assets/mijuwi/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/mijuwi/brandstory-${i+1}.jpg`)},
+
+  {id:'dogslove',title:"Dog's Love",category:'ecommerce',categoryLabel:'E-Commerce · Pet Food',
+   desc:'Premium pet food product listing design with a natural, organic aesthetic. Image sets emphasizing ingredient quality, feeding guides, and brand trust signals.',
+   tags:['Amazon','Product Listing','Natural/Organic','Pet Industry'],cover:'assets/dogslove/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/dogslove/aplus-${i+1}.jpg`),
+   listing:Array.from({length:6},(_,i)=>`assets/dogslove/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/dogslove/brandstory-${i+1}.jpg`)},
+
+  {id:'fitis',title:'Fitis',category:'ecommerce',categoryLabel:'E-Commerce · Household',
+   desc:'Product flyers, packaging design, and photoshoot direction for a Vietnamese household brand. Clean, minimal approach showcasing product range and features.',
+   tags:['Print','Packaging','Photoshoot','Product Design'],cover:'assets/fitis/cover.jpg',
+   aplus:Array.from({length:7},(_,i)=>`assets/fitis/aplus-${i+1}.jpg`),
+   listing:Array.from({length:6},(_,i)=>`assets/fitis/listing-${i+1}.jpg`),
+   brandstory:Array.from({length:3},(_,i)=>`assets/fitis/brandstory-${i+1}.jpg`)},
+
+  {id:'luckykitty',title:'Lucky-Kitty',category:'print',categoryLabel:'Print · Catalog Design',
+   desc:'Multi-page product catalog for a premium cat food brand. Designed with warm, inviting layouts combining product photography, nutritional information, and feeding guides.',
+   tags:['Catalog','Print Design','Editorial','Pet Industry'],cover:'assets/luckykitty/cover.jpg',
+   images:Array.from({length:6},(_,i)=>`assets/luckykitty/${i+1}.jpg`)},
+
+  {id:'eureka',title:'Eureka',category:'exhibition',categoryLabel:'Exhibition · Interactive Science',
+   desc:'Creative direction for EUREKA — An Interactive Science exhibition showcasing human body parts for kids. Developed floor plans, placed models, and designed all infographics in English and Vietnamese.',
+   tags:['Exhibition','Infographics','Bilingual','Educational'],cover:'assets/eureka/cover.jpg',
+   images:Array.from({length:8},(_,i)=>`assets/eureka/${i+1}.jpg`)}
+];
+
+const retouchItems=[
+  {label:'Product Compositing'},{label:'Background Replacement'},
+  {label:'Lifestyle Scene Creation'},{label:'Color & Tone Enhancement'},
+  {label:'Shadow & Reflection'},{label:'Before & After'}
+];
+
+// SVG icons
+const arrowL=`<svg viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const arrowR=`<svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const swipeIcon=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
+
+let carouselCounter=0;
+function buildCarousel(items,label,type,title){
+  const cls=type==='aplus'?'carousel--aplus':type==='listing'?'carousel--listing':'carousel--brandstory';
+  const cid=`c${carouselCounter++}`;
+  return `
+    <div class="tab-section__label">${label} · ${items.length} images</div>
+    <div class="carousel ${cls}" id="${cid}">
+      <div class="carousel__track">
+        ${items.map((_,i)=>`<div class="carousel__item"><div class="placeholder-img">${title}<br>${label} ${i+1}</div></div>`).join('')}
+      </div>
+      <div class="carousel__nav">
+        <div class="carousel__hint">${swipeIcon}<span>Swipe to browse</span></div>
+        <div class="carousel__arrows">
+          <button class="carousel__arrow" onclick="scrollC('${cid}',-1)" aria-label="Previous">${arrowL}</button>
+          <button class="carousel__arrow" onclick="scrollC('${cid}',1)" aria-label="Next">${arrowR}</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function scrollC(id,dir){
+  const t=document.querySelector(`#${id} .carousel__track`);
+  const item=t.querySelector('.carousel__item');
+  if(!item)return;
+  t.scrollBy({left:dir*(item.offsetWidth+16),behavior:'smooth'});
+}
+
+// Render projects grid
+const grid=document.getElementById('projectsGrid');
+function renderProjects(filter='all'){
+  grid.innerHTML='';
+  const list=filter==='all'?projects:projects.filter(p=>p.category===filter);
+  list.forEach((p,i)=>{
+    const card=document.createElement('div');
+    card.className=`project-card reveal reveal-delay-${Math.min(i%4+1,4)}`;
+    card.innerHTML=`
+      <div class="project-card__img">
+        <div class="placeholder-img">${p.title} — Cover</div>
+        <div class="project-card__overlay"><span>View Project →</span></div>
+      </div>
+      <div class="project-card__info">
+        <h3 class="project-card__title">${p.title}</h3>
+        <p class="project-card__category">${p.categoryLabel}</p>
+      </div>`;
+    card.addEventListener('click',()=>openModal(p));
+    grid.appendChild(card);
+  });
+  observeReveals();
+}
+renderProjects();
+
+document.querySelectorAll('.filter-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    renderProjects(btn.dataset.filter);
+  });
+});
+
+// Render retouching
+const rGrid=document.getElementById('retouchGrid');
+retouchItems.forEach((item,i)=>{
+  const el=document.createElement('div');
+  el.className=`retouch-item reveal reveal-delay-${Math.min(i%4+1,4)}`;
+  el.innerHTML=`<div class="placeholder-img" style="aspect-ratio:3/2">${item.label}</div><div class="retouch-item__label">${item.label}</div>`;
+  rGrid.appendChild(el);
+});
+
+// Modal
+const overlay=document.getElementById('modalOverlay');
+function openModal(p){
+  const isEC=p.category==='ecommerce';
+  document.getElementById('modalHero').innerHTML=`<div class="placeholder-img" style="aspect-ratio:16/9">${p.title} — Hero</div>`;
+  document.getElementById('modalEyebrow').textContent=p.categoryLabel;
+  document.getElementById('modalTitle').textContent=p.title;
+  document.getElementById('modalDesc').textContent=p.desc;
+  document.getElementById('modalTags').innerHTML=p.tags.map(t=>`<span class="modal__tag">${t}</span>`).join('');
+
+  const content=document.getElementById('modalContent');
+  carouselCounter=0;
+
+  if(isEC){
+    content.innerHTML=`
+      <div class="modal__tabs">
+        <button class="modal__tab active" data-tab="aplus">A+ Content</button>
+        <button class="modal__tab" data-tab="listing">Listing Images</button>
+        <button class="modal__tab" data-tab="brandstory">Brand Story</button>
+      </div>
+      <div class="modal__tab-content active" data-tab-content="aplus">
+        ${buildCarousel(p.aplus,'A+ Content','aplus',p.title)}
+      </div>
+      <div class="modal__tab-content" data-tab-content="listing">
+        ${buildCarousel(p.listing,'Listing Images','listing',p.title)}
+      </div>
+      <div class="modal__tab-content" data-tab-content="brandstory">
+        ${buildCarousel(p.brandstory,'Brand Story','brandstory',p.title)}
+      </div>`;
+    content.querySelectorAll('.modal__tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        content.querySelectorAll('.modal__tab').forEach(t=>t.classList.remove('active'));
+        content.querySelectorAll('.modal__tab-content').forEach(tc=>tc.classList.remove('active'));
+        tab.classList.add('active');
+        content.querySelector(`[data-tab-content="${tab.dataset.tab}"]`).classList.add('active');
+      });
+    });
+  } else {
+    content.innerHTML=`<div class="modal__gallery">${p.images.map((_,i)=>`<div class="modal__gallery-item"><div class="placeholder-img">${p.title} — Image ${i+1}</div></div>`).join('')}</div>`;
+  }
+
+  overlay.classList.add('open');
+  overlay.scrollTop=0;
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){overlay.classList.remove('open');document.body.style.overflow=''}
+document.getElementById('modalClose').addEventListener('click',closeModal);
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// Nav scroll
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)},{passive:true});
+
+// Hamburger
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('active');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});
+function closeMenu(){hamburger.classList.remove('active');mobileMenu.classList.remove('open');document.body.style.overflow=''}
+
+// Scroll reveal
+function observeReveals(){
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));
+}
+observeReveals();
+
+// Counters
+const cObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,t=parseInt(el.dataset.count);let c=0;const inc=t/40;const timer=setInterval(()=>{c+=inc;if(c>=t){c=t;clearInterval(timer)}el.textContent=Math.floor(c)+'+'},30);cObs.unobserve(el)}})},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>cObs.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+</script>
 </body>
 </html>
-
