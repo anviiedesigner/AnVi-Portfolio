@@ -129,7 +129,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .modal__close{position:absolute;top:1.25rem;right:1.25rem;z-index:10;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:var(--off-white);transition:background .3s;border-radius:50%}
 .modal__close:hover{background:var(--cream)}.modal__close svg{width:16px;height:16px;color:var(--espresso)}
 .modal__hero{width:100%;aspect-ratio:16/9;overflow:hidden;background:var(--cream)}
-.modal__hero .placeholder-img{width:100%;height:100%;object-fit:cover}
+.modal__hero img,.modal__hero .placeholder-img{width:100%;height:100%;object-fit:cover}
 .modal__body{padding:2.5rem}
 .modal__eyebrow{font-size:.6875rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--taupe);margin-bottom:.75rem}
 .modal__title{font-family:var(--font-display);font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:var(--espresso);margin-bottom:1rem}
@@ -150,11 +150,10 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .carousel__track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
 .carousel__track::-webkit-scrollbar{display:none}
 .carousel__item{flex:0 0 auto;scroll-snap-align:start;overflow:hidden;background:var(--cream)}
-.carousel__item .placeholder-img{width:100%;height:100%;object-fit:cover}
+.carousel__item img,.carousel__item .placeholder-img{width:100%;height:100%;object-fit:cover}
 
 .carousel--aplus .carousel__item{width:min(360px,80vw);aspect-ratio:9/16}
 .carousel--listing .carousel__item{width:min(300px,75vw);aspect-ratio:1/1}
-.carousel--brandstory .carousel__item{width:min(480px,88vw);aspect-ratio:16/9}
 
 .carousel__nav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
 .carousel__arrows{display:flex;gap:.5rem}
@@ -169,8 +168,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 /* SIMPLE GALLERY */
 .modal__gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem}
-.modal__gallery-item{overflow:hidden;aspect-ratio:4/3;background:var(--cream)}
-.modal__gallery-item .placeholder-img{width:100%;height:100%;object-fit:cover}
+.modal__gallery-item{overflow:hidden;background:var(--cream)}
+.modal__gallery-item img,.modal__gallery-item .placeholder-img{width:100%;height:auto;object-fit:contain}
 
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease-out-expo),transform .7s var(--ease-out-expo)}
@@ -181,7 +180,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 /* RESPONSIVE */
 @media(max-width:900px){.about__inner{grid-template-columns:1fr;gap:2rem}.projects__grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.modal__gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
-@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:min(260px,75vw)}.carousel--listing .carousel__item{width:min(240px,72vw)}.carousel--brandstory .carousel__item{width:min(300px,85vw)}}
+@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:min(260px,75vw)}.carousel--listing .carousel__item{width:min(240px,72vw)}}
 </style>
 </head>
 <body>
@@ -248,7 +247,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
       <div class="projects__filter reveal reveal-delay-2">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-        <button class="filter-btn" data-filter="print">Print</button>
+        <button class="filter-btn" data-filter="print">Print & Brand</button>
         <button class="filter-btn" data-filter="exhibition">Exhibition</button>
       </div>
     </div>
@@ -276,9 +275,8 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
     </div>
   </div>
 </section>
-<footer class="footer"><p>&copy; 2025 Anh Viet. All rights reserved.</p></footer>
+<footer class="footer"><p>&copy; 2026 Anh Viet. All rights reserved.</p></footer>
 
-<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal" id="modal">
     <button class="modal__close" id="modalClose" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -294,65 +292,182 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 </div>
 
 <script>
-const projects=[
-  {id:'safetyfurst',title:'Safety Furst',category:'ecommerce',categoryLabel:'E-Commerce · Pet Products',
-   desc:'Product listing design for a premium pet safety brand. Created high-impact Amazon images highlighting product features, durability, and lifestyle usage to drive conversions.',
-   tags:['Amazon','Product Listing','Lifestyle','Pet Industry'],cover:'assets/safetyfurst/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/safetyfurst/aplus-${i+1}.jpg`),
-   listing:Array.from({length:8},(_,i)=>`assets/safetyfurst/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/safetyfurst/brandstory-${i+1}.jpg`)},
+const projects = [
+  {
+    id: 'safetyfurst',
+    title: 'Safety Furst',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Pet Products',
+    desc: 'Product listing design for a premium pet safety brand. Created high-impact Amazon images highlighting product features, durability, and lifestyle usage.',
+    tags: ['Amazon', 'Listing Images', 'A+ Content'],
+    cover: 'assets/SAFETYFURST/Listing/PT01.jpg.png',
+    aplus: [
+      '1.png', '2.png', '3.png', '4-1.png', '4.png', '5.png', '6.png'
+    ].map(f => `assets/SAFETYFURST/Image A+/${f}`),
+    listing: [
+      'Artboard 5.png', 'PT01.jpg.png', 'PT02.png.png', 'PT03.png.png', 'PT4.png.png', 'PT5.png.png', 'PT06.png.png', 'PT07.png.png'
+    ].map(f => `assets/SAFETYFURST/Listing/${f}`)
+  },
+  
+  {
+    id: 'hibrain',
+    title: 'Hi Brain',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Technology',
+    desc: 'Clean, technical Amazon listings and A+ content featuring detailed product breakdowns for multiple colorways.',
+    tags: ['Amazon', 'A+ Content', 'Tech'],
+    cover: 'assets/HI BRAIN/IMG/BLUE/Main IMG.png',
+    aplus: [
+      'Artboard 1.png', 'Artboard 2.png', 'Artboard 3.png', 'Artboard 4.png', 'Artboard 5.png', 'Artboard 6.png'
+    ].map(f => `assets/HI BRAIN/A+ Basic/${f}`),
+    listing: [
+      'IMG/BLUE/Main IMG.png', 'IMG/BLUE/IMG 4.png', 'IMG/BLUE/IMG 5.png', 'IMG/BLUE/IMG 6.png',
+      'IMG/PINK/Main IMG.png', 'IMG/PINK/IMG 4.png', 'IMG/PINK/IMG 5.png', 'IMG/PINK/IMG 6.png'
+    ].map(f => `assets/HI BRAIN/${f}`)
+  },
 
-  {id:'facepalm',title:'Facepalm',category:'ecommerce',categoryLabel:'E-Commerce · Cosmetics',
-   desc:'Amazon storefront and product listing design for a natural skincare brand. Developed visual identity that communicates freshness and simplicity across all touchpoints.',
-   tags:['Amazon Storefront','Product Listing','Branding','Skincare'],cover:'assets/facepalm/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/facepalm/aplus-${i+1}.jpg`),
-   listing:Array.from({length:6},(_,i)=>`assets/facepalm/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/facepalm/brandstory-${i+1}.jpg`)},
+  {
+    id: 'foodspring',
+    title: 'Foodspring',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Supplements',
+    desc: 'High-conversion product listings and infographics for fitness supplements.',
+    tags: ['Amazon', 'Listing Images', 'Supplements'],
+    cover: 'assets/FOODSPRING/B0CTR3FZ7W.MAIN.png',
+    listing: [
+      'B0CTR3FZ7W.MAIN.png', 'B0CTR3FZ7W.PT01.png', 'B0CTR3FZ7W.PT02.png', 'B0CTR3FZ7W.PT03.png', 
+      'B0CTR3FZ7W.PT04.png', 'B0CTR3FZ7W.PT05.png', 'B0CTR3FZ7W.PT06.png', 'B0CTR3FZ7W.PT07.png'
+    ].map(f => `assets/FOODSPRING/${f}`)
+  },
 
-  {id:'carbigo',title:'Carbigo',category:'ecommerce',categoryLabel:'E-Commerce · Automotive',
-   desc:'Amazon product listing images for a German automotive paint pen brand. Dark, industrial aesthetic with clear feature callouts and before/after demonstrations.',
-   tags:['Amazon DE','Product Photography','Automotive','German Market'],cover:'assets/carbigo/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/carbigo/aplus-${i+1}.jpg`),
-   listing:Array.from({length:7},(_,i)=>`assets/carbigo/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/carbigo/brandstory-${i+1}.jpg`)},
+  {
+    id: 'facepalm',
+    title: 'Facepalm',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Cosmetics',
+    desc: 'Vibrant and modern cosmetic line product styling showcasing variants like Kiwi, Mango, and Strawberry.',
+    tags: ['Product Styling', 'Cosmetics', 'Variations'],
+    cover: 'assets/FACEPALM/IMG KIWI/Artboard 1.png',
+    listing: [
+      'IMG KIWI/Artboard 1.png', 'IMG KIWI/Artboard 2.png', 
+      'IMG MANGO/Artboard 6.png', 'IMG MANGO/Artboard 7.png', 'IMG MANGO/Artboard 8.png',
+      'IMG STRAWBERRY/IMG 3.png', 'IMG STRAWBERRY/IMG 4.png', 'IMG STRAWBERRY/IMG 5.png'
+    ].map(f => `assets/FACEPALM/${f}`)
+  },
 
-  {id:'pritex',title:'Pritex',category:'ecommerce',categoryLabel:'E-Commerce · Industrial Tools',
-   desc:'Bold, high-contrast product listing design for a professional-grade foam gun brand. Emphasized rugged construction and versatility through dynamic compositions.',
-   tags:['Amazon DE','Industrial','Product Listing','Bold Design'],cover:'assets/pritex/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/pritex/aplus-${i+1}.jpg`),
-   listing:Array.from({length:6},(_,i)=>`assets/pritex/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/pritex/brandstory-${i+1}.jpg`)},
+  {
+    id: 'amzell',
+    title: 'Amzell',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Optimization',
+    desc: 'Optimized product gallery focusing on clear feature callouts and consumer trust.',
+    tags: ['Amazon', 'Listing Images'],
+    cover: 'assets/AMZELL/1.png',
+    listing: [
+      '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', 'Artboard 1.png', 'Artboard 2.png'
+    ].map(f => `assets/AMZELL/${f}`)
+  },
 
-  {id:'mijuwi',title:'Mijuwi',category:'ecommerce',categoryLabel:'E-Commerce · Beverages',
-   desc:'Fresh, vibrant product visuals for a sugar-free syrup brand. Transformed product images to appear realistic while highlighting practical use and lifestyle appeal.',
-   tags:['Website','Product Images','Lifestyle','Food & Beverage'],cover:'assets/mijuwi/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/mijuwi/aplus-${i+1}.jpg`),
-   listing:Array.from({length:6},(_,i)=>`assets/mijuwi/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/mijuwi/brandstory-${i+1}.jpg`)},
+  {
+    id: 'carbigo',
+    title: 'Carbigo',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Automotive',
+    desc: 'Amazon product listing images for a German automotive paint pen brand. Dark, industrial aesthetic with clear feature callouts and demonstrations.',
+    tags: ['Amazon DE', 'Automotive', 'German Market'],
+    cover: 'assets/CARBIGO/Artboard 2.png',
+    listing: [
+      'Artboard 2.png', 'Artboard 3.png', 'Artboard 5.png', 'Artboard 6.png', 'Artboard 7.png', 'Artboard 8.png', 'Artboard 9.png'
+    ].map(f => `assets/CARBIGO/${f}`)
+  },
 
-  {id:'dogslove',title:"Dog's Love",category:'ecommerce',categoryLabel:'E-Commerce · Pet Food',
-   desc:'Premium pet food product listing design with a natural, organic aesthetic. Image sets emphasizing ingredient quality, feeding guides, and brand trust signals.',
-   tags:['Amazon','Product Listing','Natural/Organic','Pet Industry'],cover:'assets/dogslove/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/dogslove/aplus-${i+1}.jpg`),
-   listing:Array.from({length:6},(_,i)=>`assets/dogslove/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/dogslove/brandstory-${i+1}.jpg`)},
+  {
+    id: 'mijuwi',
+    title: 'Mijuwi',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Beverages',
+    desc: 'Fresh, vibrant product visuals for a sugar-free syrup brand.',
+    tags: ['Product Images', 'Lifestyle', 'Food & Beverage'],
+    cover: 'assets/MIJUWI/1.jpg', 
+    listing: [
+      '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg' 
+    ].map(f => `assets/MIJUWI/${f}`)
+  },
+  
+  {
+    id: 'efly',
+    title: 'Efly Dog Food',
+    category: 'ecommerce',
+    categoryLabel: 'E-Commerce · Pet Food',
+    desc: 'Premium pet food product listing design emphasizing nutritional benefits, natural ingredients, and brand quality.',
+    tags: ['Amazon', 'Listing Images', 'Pet Industry'],
+    cover: 'assets/EFLY - DOG FOOD/1.jpg',
+    listing: [
+      '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'
+    ].map(f => `assets/EFLY - DOG FOOD/${f}`)
+  },
 
-  {id:'fitis',title:'Fitis',category:'ecommerce',categoryLabel:'E-Commerce · Household',
-   desc:'Product flyers, packaging design, and photoshoot direction for a Vietnamese household brand. Clean, minimal approach showcasing product range and features.',
-   tags:['Print','Packaging','Photoshoot','Product Design'],cover:'assets/fitis/cover.jpg',
-   aplus:Array.from({length:7},(_,i)=>`assets/fitis/aplus-${i+1}.jpg`),
-   listing:Array.from({length:6},(_,i)=>`assets/fitis/listing-${i+1}.jpg`),
-   brandstory:Array.from({length:3},(_,i)=>`assets/fitis/brandstory-${i+1}.jpg`)},
+  {
+    id: 'nemnem',
+    title: 'Nêm Nếm',
+    category: 'print',
+    categoryLabel: 'Branding · Social Layouts',
+    desc: 'Cohesive social media layouts and menu design for a food & beverage brand.',
+    tags: ['Social Media', 'Menu Design', 'Branding'],
+    cover: 'assets/NÊM NẾM SOCIAL/FULL LAYOUT 1/Artboard 1.png',
+    images: [
+      'FULL LAYOUT 1/Artboard 1.png', 'FULL LAYOUT 1/Artboard 2.png', 'FULL LAYOUT 1/Artboard 3.png',
+      'FULL LAYOUT 2/Artboard 1.png', 'FULL LAYOUT 2/Artboard 2.png', 'FULL LAYOUT 2/Artboard 3.png',
+      'Menu.png', 'LOGO.png'
+    ].map(f => `assets/NÊM NẾM SOCIAL/${f}`)
+  },
 
-  {id:'luckykitty',title:'Lucky-Kitty',category:'print',categoryLabel:'Print · Catalog Design',
-   desc:'Multi-page product catalog for a premium cat food brand. Designed with warm, inviting layouts combining product photography, nutritional information, and feeding guides.',
-   tags:['Catalog','Print Design','Editorial','Pet Industry'],cover:'assets/luckykitty/cover.jpg',
-   images:Array.from({length:6},(_,i)=>`assets/luckykitty/${i+1}.jpg`)},
+  {
+    id: 'fitis',
+    title: 'Fitis',
+    category: 'print',
+    categoryLabel: 'Print & Packaging',
+    desc: 'Product flyers, packaging design, and photoshoot direction for a Vietnamese household brand.',
+    tags: ['Packaging', 'Photoshoot', 'Household'],
+    cover: 'assets/FITIS/1V1A6096 (1).jpg',
+    images: [
+      '1V1A6096 (1).jpg', '1V1A9355-Edit (1).jpg', '1V1A9472-Edit (1).jpg',
+      'DURA - back (1).png', 'DURA - front.png',
+      'Screenshot 2026-04-03 at 23.06.29.png', 'Screenshot 2026-04-03 at 23.06.47.png', 'LOGO.png'
+    ].map(f => `assets/FITIS/${f}`)
+  },
 
-  {id:'eureka',title:'Eureka',category:'exhibition',categoryLabel:'Exhibition · Interactive Science',
-   desc:'Creative direction for EUREKA — An Interactive Science exhibition showcasing human body parts for kids. Developed floor plans, placed models, and designed all infographics in English and Vietnamese.',
-   tags:['Exhibition','Infographics','Bilingual','Educational'],cover:'assets/eureka/cover.jpg',
-   images:Array.from({length:8},(_,i)=>`assets/eureka/${i+1}.jpg`)}
+  {
+    id: 'luckykitty',
+    title: 'Lucky-Kitty',
+    category: 'print',
+    categoryLabel: 'Print · Catalog Design',
+    desc: 'Multi-page product catalog for a premium cat food brand. Designed with warm, inviting layouts.',
+    tags: ['Catalog', 'Print Design', 'Pet Industry'],
+    cover: 'assets/LUCKY KITTY/Artboard 1.png',
+    images: [
+      'Artboard 1.png', 'Artboard 2.png', 'Artboard 3.png',
+      'Artboard 9.png', 'Artboard 10.png', 'Artboard 11.png',
+      'Artboard 12.png', 'Artboard 13.png', 'Artboard 14.png'
+    ].map(f => `assets/LUCKY KITTY/${f}`)
+  },
+
+  {
+    id: 'eureka',
+    title: 'Eureka',
+    category: 'exhibition',
+    categoryLabel: 'Exhibition · Interactive Science',
+    desc: 'Creative direction for EUREKA — An Interactive Science exhibition. Developed floor plans and designed infographics.',
+    tags: ['Exhibition', 'Infographics', 'Educational'],
+    cover: 'assets/EUREKA/Screenshot 2026-04-03 at 23.03.32.png',
+    images: [
+      'eureka logo.png',
+      'Screenshot 2026-04-03 at 23.03.32.png', 'Screenshot 2026-04-03 at 23.04.02.png',
+      'Screenshot 2026-04-03 at 23.04.12.png', 'Screenshot 2026-04-03 at 23.04.25.png',
+      'Screenshot 2026-04-03 at 23.04.33.png', 'Screenshot 2026-04-03 at 23.04.51.png',
+      'Screenshot 2026-04-03 at 23.05.01.png', 'Screenshot 2026-04-03 at 23.05.26.png'
+    ].map(f => `assets/EUREKA/${f}`)
+  }
 ];
 
 const retouchItems=[
@@ -367,14 +482,14 @@ const arrowR=`<svg viewBox="0 0 16 16" fill="none"><path d="M6 4l4 4-4 4" stroke
 const swipeIcon=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>`;
 
 let carouselCounter=0;
-function buildCarousel(items,label,type,title){
-  const cls=type==='aplus'?'carousel--aplus':type==='listing'?'carousel--listing':'carousel--brandstory';
+function buildCarousel(items,label,type){
+  const cls=type==='aplus'?'carousel--aplus':'carousel--listing';
   const cid=`c${carouselCounter++}`;
   return `
     <div class="tab-section__label">${label} · ${items.length} images</div>
     <div class="carousel ${cls}" id="${cid}">
       <div class="carousel__track">
-        ${items.map((_,i)=>`<div class="carousel__item"><div class="placeholder-img">${title}<br>${label} ${i+1}</div></div>`).join('')}
+        ${items.map(img => `<div class="carousel__item"><img src="${img}" alt="${label}" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing<br>${img}</div>'"></div>`).join('')}
       </div>
       <div class="carousel__nav">
         <div class="carousel__hint">${swipeIcon}<span>Swipe to browse</span></div>
@@ -403,7 +518,7 @@ function renderProjects(filter='all'){
     card.className=`project-card reveal reveal-delay-${Math.min(i%4+1,4)}`;
     card.innerHTML=`
       <div class="project-card__img">
-        <div class="placeholder-img">${p.title} — Cover</div>
+        <img src="${p.cover}" alt="${p.title}" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>${p.title}<br>Cover Missing</div>'">
         <div class="project-card__overlay"><span>View Project →</span></div>
       </div>
       <div class="project-card__info">
@@ -438,7 +553,7 @@ retouchItems.forEach((item,i)=>{
 const overlay=document.getElementById('modalOverlay');
 function openModal(p){
   const isEC=p.category==='ecommerce';
-  document.getElementById('modalHero').innerHTML=`<div class="placeholder-img" style="aspect-ratio:16/9">${p.title} — Hero</div>`;
+  document.getElementById('modalHero').innerHTML=`<img src="${p.cover}" alt="${p.title}" onerror="this.outerHTML='<div class=\\'placeholder-img\\' style=\\'aspect-ratio:16/9\\'>Hero Missing</div>'">`;
   document.getElementById('modalEyebrow').textContent=p.categoryLabel;
   document.getElementById('modalTitle').textContent=p.title;
   document.getElementById('modalDesc').textContent=p.desc;
@@ -448,21 +563,24 @@ function openModal(p){
   carouselCounter=0;
 
   if(isEC){
-    content.innerHTML=`
-      <div class="modal__tabs">
-        <button class="modal__tab active" data-tab="aplus">A+ Content</button>
-        <button class="modal__tab" data-tab="listing">Listing Images</button>
-        <button class="modal__tab" data-tab="brandstory">Brand Story</button>
-      </div>
-      <div class="modal__tab-content active" data-tab-content="aplus">
-        ${buildCarousel(p.aplus,'A+ Content','aplus',p.title)}
-      </div>
-      <div class="modal__tab-content" data-tab-content="listing">
-        ${buildCarousel(p.listing,'Listing Images','listing',p.title)}
-      </div>
-      <div class="modal__tab-content" data-tab-content="brandstory">
-        ${buildCarousel(p.brandstory,'Brand Story','brandstory',p.title)}
-      </div>`;
+    let tabsHTML = '<div class="modal__tabs">';
+    let contentHTML = '';
+    let isFirst = true;
+
+    if (p.aplus && p.aplus.length > 0) {
+      tabsHTML += `<button class="modal__tab ${isFirst ? 'active' : ''}" data-tab="aplus">A+ Content</button>`;
+      contentHTML += `<div class="modal__tab-content ${isFirst ? 'active' : ''}" data-tab-content="aplus">${buildCarousel(p.aplus,'A+ Content','aplus')}</div>`;
+      isFirst = false;
+    }
+    if (p.listing && p.listing.length > 0) {
+      tabsHTML += `<button class="modal__tab ${isFirst ? 'active' : ''}" data-tab="listing">Listing Images</button>`;
+      contentHTML += `<div class="modal__tab-content ${isFirst ? 'active' : ''}" data-tab-content="listing">${buildCarousel(p.listing,'Listing Images','listing')}</div>`;
+      isFirst = false;
+    }
+    
+    tabsHTML += '</div>';
+    content.innerHTML = tabsHTML + contentHTML;
+
     content.querySelectorAll('.modal__tab').forEach(tab=>{
       tab.addEventListener('click',()=>{
         content.querySelectorAll('.modal__tab').forEach(t=>t.classList.remove('active'));
@@ -472,7 +590,7 @@ function openModal(p){
       });
     });
   } else {
-    content.innerHTML=`<div class="modal__gallery">${p.images.map((_,i)=>`<div class="modal__gallery-item"><div class="placeholder-img">${p.title} — Image ${i+1}</div></div>`).join('')}</div>`;
+    content.innerHTML=`<div class="modal__gallery">${p.images.map(img=>`<div class="modal__gallery-item"><img src="${img}" alt="Gallery Image" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing</div>'"></div>`).join('')}</div>`;
   }
 
   overlay.classList.add('open');
