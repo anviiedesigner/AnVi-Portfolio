@@ -147,13 +147,19 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 /* CAROUSEL */
 .carousel{position:relative;overflow:hidden}
-.carousel__track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem}
+.carousel__track{display:flex;gap:1rem;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;align-items:center}
 .carousel__track::-webkit-scrollbar{display:none}
-.carousel__item{flex:0 0 auto;scroll-snap-align:start;overflow:hidden;background:var(--cream)}
-.carousel__item img,.carousel__item .placeholder-img{width:100%;height:100%;object-fit:cover}
 
-.carousel--aplus .carousel__item{width:min(360px,80vw);aspect-ratio:9/16}
-.carousel--listing .carousel__item{width:min(300px,75vw);aspect-ratio:1/1}
+.carousel__item{flex:0 0 auto;scroll-snap-align:start;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center}
+/* Change from cover to contain so nothing gets cut off */
+.carousel__item img,.carousel__item .placeholder-img{width:100%;height:100%;object-fit:contain}
+
+/* A+ Content: Wide and natural height */
+.carousel--aplus .carousel__item{width:min(800px, 85vw); height:auto; max-height: 70vh}
+.carousel--aplus .carousel__item img{height:auto; max-height: 70vh}
+
+/* Listing Images: Perfect squares */
+.carousel--listing .carousel__item{width:min(400px, 75vw);aspect-ratio:1/1}
 
 .carousel__nav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
 .carousel__arrows{display:flex;gap:.5rem}
@@ -180,7 +186,7 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 
 /* RESPONSIVE */
 @media(max-width:900px){.about__inner{grid-template-columns:1fr;gap:2rem}.projects__grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}.modal__gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
-@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:min(260px,75vw)}.carousel--listing .carousel__item{width:min(240px,72vw)}}
+@media(max-width:640px){.nav__links{display:none}.nav__hamburger{display:flex}.hero{padding:6rem 1.25rem 3rem}.section{padding:4rem 1.25rem}.hero__title{font-size:clamp(2.5rem,12vw,4rem)}.projects__grid{grid-template-columns:1fr}.projects__header{flex-direction:column;align-items:flex-start}.retouching__grid{grid-template-columns:1fr}.about__stats{grid-template-columns:1fr 1fr}.contact__links{flex-direction:column;align-items:center}.modal__body{padding:1.5rem}.modal-overlay{padding:0}.modal{margin:0}.modal__tab{padding:.75rem 1rem;font-size:.6875rem}.carousel--aplus .carousel__item{width:85vw}.carousel--listing .carousel__item{width:min(300px,80vw)}}
 </style>
 </head>
 <body>
@@ -418,7 +424,7 @@ const projects = [
     images: [
       'FULL LAYOUT 1/Artboard 1.png', 'FULL LAYOUT 1/Artboard 2.png', 'FULL LAYOUT 1/Artboard 3.png',
       'FULL LAYOUT 2/Artboard 1.png', 'FULL LAYOUT 2/Artboard 2.png', 'FULL LAYOUT 2/Artboard 3.png',
-      'Menu.png', 'LOGO.png'
+      'Menu.png'
     ].map(f => `NÊM NẾM SOCIAL/${f}`)
   },
 
