@@ -151,14 +151,11 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;o
 .carousel__track::-webkit-scrollbar{display:none}
 
 .carousel__item{flex:0 0 auto;scroll-snap-align:start;overflow:hidden;background:var(--cream);display:flex;align-items:center;justify-content:center}
-/* Change from cover to contain so nothing gets cut off */
 .carousel__item img,.carousel__item .placeholder-img{width:100%;height:100%;object-fit:contain}
 
-/* A+ Content: Wide and natural height */
 .carousel--aplus .carousel__item{width:min(800px, 85vw); height:auto; max-height: 70vh}
 .carousel--aplus .carousel__item img{height:auto; max-height: 70vh}
 
-/* Listing Images: Perfect squares */
 .carousel--listing .carousel__item{width:min(400px, 75vw);aspect-ratio:1/1}
 
 .carousel__nav{display:flex;align-items:center;justify-content:space-between;margin-top:1rem}
@@ -418,14 +415,14 @@ const projects = [
     title: 'Nêm Nếm',
     category: 'print',
     categoryLabel: 'Branding · Social Layouts',
-    desc: 'Cohesive social media layouts and menu design for a food & beverage brand.',
+    desc: 'Thiết kế đồng bộ các ấn phẩm mạng xã hội và menu cho thương hiệu ngành F&B.',
     tags: ['Social Media', 'Menu Design', 'Branding'],
-    cover: 'NÊM NẾM SOCIAL/FULL LAYOUT 1/Artboard 1.png',
+    cover: 'NEMNEM/FULL LAYOUT 1/Artboard 1.png',
     images: [
       'FULL LAYOUT 1/Artboard 1.png', 'FULL LAYOUT 1/Artboard 2.png', 'FULL LAYOUT 1/Artboard 3.png',
       'FULL LAYOUT 2/Artboard 1.png', 'FULL LAYOUT 2/Artboard 2.png', 'FULL LAYOUT 2/Artboard 3.png',
       'Menu.png'
-    ].map(f => `NÊM NẾM SOCIAL/${f}`)
+    ].map(f => `NEMNEM/${f}`)
   },
 
   {
