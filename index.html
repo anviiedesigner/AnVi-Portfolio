@@ -351,6 +351,8 @@ if(!prefersReducedMotion && window.Lenis){
   requestAnimationFrame(tick);
 })();
 
+const toWebp = p => p.replace(/\.(png|jpe?g)$/i, '.webp');
+
 const projects = [
   {
     id: 'safetyfurst',
@@ -359,13 +361,13 @@ const projects = [
     categoryLabel: 'E-Commerce · Pet Products',
     desc: 'Product listing design for a premium pet safety brand. Created high-impact Amazon images highlighting product features, durability, and lifestyle usage.',
     tags: ['Amazon', 'Listing Images', 'A+ Content'],
-    cover: 'SAFETYFURST/Listing/PT01.jpg.png',
+    cover: toWebp('SAFETYFURST/Listing/PT01.jpg.png'),
     aplus: [
       '1.png', '2.png', '3.png', '4-1.png', '4.png', '5.png', '6.png'
-    ].map(f => `SAFETYFURST/Image A+/${f}`),
+    ].map(f => toWebp(`SAFETYFURST/Image A+/${f}`)),
     listing: [
       'Artboard 5.png', 'PT01.jpg.png', 'PT02.png.png', 'PT03.png.png', 'PT4.png.png', 'PT5.png.png', 'PT06.png.png', 'PT07.png.png'
-    ].map(f => `SAFETYFURST/Listing/${f}`)
+    ].map(f => toWebp(`SAFETYFURST/Listing/${f}`))
   },
   
   {
@@ -375,14 +377,14 @@ const projects = [
     categoryLabel: 'E-Commerce · Technology',
     desc: 'Clean, technical Amazon listings and A+ content featuring detailed product breakdowns for multiple colorways.',
     tags: ['Amazon', 'A+ Content', 'Tech'],
-    cover: 'HI BRAIN/IMG/BLUE/Main IMG.png',
+    cover: toWebp('HI BRAIN/IMG/BLUE/Main IMG.png'),
     aplus: [
       'Artboard 1.png', 'Artboard 2.png', 'Artboard 3.png', 'Artboard 4.png', 'Artboard 5.png', 'Artboard 6.png'
-    ].map(f => `HI BRAIN/A+ Basic/${f}`),
+    ].map(f => toWebp(`HI BRAIN/A+ Basic/${f}`)),
     listing: [
       'IMG/BLUE/Main IMG.png', 'IMG/BLUE/IMG 4.png', 'IMG/BLUE/IMG 5.png', 'IMG/BLUE/IMG 6.png',
       'IMG/PINK/Main IMG.png', 'IMG/PINK/IMG 4.png', 'IMG/PINK/IMG 5.png', 'IMG/PINK/IMG 6.png'
-    ].map(f => `HI BRAIN/${f}`)
+    ].map(f => toWebp(`HI BRAIN/${f}`))
   },
 
   {
@@ -392,11 +394,11 @@ const projects = [
     categoryLabel: 'E-Commerce · Supplements',
     desc: 'High-conversion product listings and infographics for fitness supplements.',
     tags: ['Amazon', 'Listing Images', 'Supplements'],
-    cover: 'FOODSPRING/B0CTR3FZ7W.MAIN.png',
+    cover: toWebp('FOODSPRING/B0CTR3FZ7W.MAIN.png'),
     listing: [
-      'B0CTR3FZ7W.MAIN.png', 'B0CTR3FZ7W.PT01.png', 'B0CTR3FZ7W.PT02.png', 'B0CTR3FZ7W.PT03.png', 
+      'B0CTR3FZ7W.MAIN.png', 'B0CTR3FZ7W.PT01.png', 'B0CTR3FZ7W.PT02.png', 'B0CTR3FZ7W.PT03.png',
       'B0CTR3FZ7W.PT04.png', 'B0CTR3FZ7W.PT05.png', 'B0CTR3FZ7W.PT06.png', 'B0CTR3FZ7W.PT07.png'
-    ].map(f => `FOODSPRING/${f}`)
+    ].map(f => toWebp(`FOODSPRING/${f}`))
   },
 
   {
@@ -406,12 +408,12 @@ const projects = [
     categoryLabel: 'E-Commerce · Cosmetics',
     desc: 'Vibrant and modern cosmetic line product styling showcasing variants like Kiwi, Mango, and Strawberry.',
     tags: ['Product Styling', 'Cosmetics', 'Variations'],
-    cover: 'FACEPALM/IMG KIWI/Artboard 1.png',
+    cover: toWebp('FACEPALM/IMG KIWI/Artboard 1.png'),
     listing: [
-      'IMG KIWI/Artboard 1.png', 'IMG KIWI/Artboard 2.png', 
+      'IMG KIWI/Artboard 1.png', 'IMG KIWI/Artboard 2.png',
       'IMG MANGO/Artboard 6.png', 'IMG MANGO/Artboard 7.png', 'IMG MANGO/Artboard 8.png',
       'IMG STRAWBERRY/IMG 3.png', 'IMG STRAWBERRY/IMG 4.png', 'IMG STRAWBERRY/IMG 5.png'
-    ].map(f => `FACEPALM/${f}`)
+    ].map(f => toWebp(`FACEPALM/${f}`))
   },
 
   {
@@ -421,10 +423,10 @@ const projects = [
     categoryLabel: 'E-Commerce · Optimization',
     desc: 'Optimized product gallery focusing on clear feature callouts and consumer trust.',
     tags: ['Amazon', 'Listing Images'],
-    cover: 'AMZELL/1.png',
+    cover: toWebp('AMZELL/1.png'),
     listing: [
       '1.png', '2.png', '3.png', '4.png', '5.png', '6.png', '7.png', '8.png', 'Artboard 1.png', 'Artboard 2.png'
-    ].map(f => `AMZELL/${f}`)
+    ].map(f => toWebp(`AMZELL/${f}`))
   },
 
   {
@@ -434,10 +436,10 @@ const projects = [
     categoryLabel: 'E-Commerce · Automotive',
     desc: 'Amazon product listing images for a German automotive paint pen brand. Dark, industrial aesthetic with clear feature callouts and demonstrations.',
     tags: ['Amazon DE', 'Automotive', 'German Market'],
-    cover: 'CARBIGO/Artboard 2.png',
+    cover: toWebp('CARBIGO/Artboard 2.png'),
     listing: [
       'Artboard 2.png', 'Artboard 3.png', 'Artboard 5.png', 'Artboard 6.png', 'Artboard 7.png', 'Artboard 8.png', 'Artboard 9.png'
-    ].map(f => `CARBIGO/${f}`)
+    ].map(f => toWebp(`CARBIGO/${f}`))
   },
 
   {
@@ -447,10 +449,10 @@ const projects = [
     categoryLabel: 'E-Commerce · Beverages',
     desc: 'Fresh, vibrant product visuals for a sugar-free syrup brand.',
     tags: ['Product Images', 'Lifestyle', 'Food & Beverage'],
-    cover: 'MIJUWI/1.jpg', 
+    cover: toWebp('MIJUWI/1.jpg'),
     listing: [
-      '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg' 
-    ].map(f => `MIJUWI/${f}`)
+      '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg'
+    ].map(f => toWebp(`MIJUWI/${f}`))
   },
   
   {
@@ -460,10 +462,10 @@ const projects = [
     categoryLabel: 'E-Commerce · Pet Food',
     desc: 'Premium pet food product listing design emphasizing nutritional benefits, natural ingredients, and brand quality.',
     tags: ['Amazon', 'Listing Images', 'Pet Industry'],
-    cover: 'EFLY - DOG FOOD/1.jpg',
+    cover: toWebp('EFLY - DOG FOOD/1.jpg'),
     listing: [
       '1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'
-    ].map(f => `EFLY - DOG FOOD/${f}`)
+    ].map(f => toWebp(`EFLY - DOG FOOD/${f}`))
   },
 
   {
@@ -473,12 +475,12 @@ const projects = [
     categoryLabel: 'Branding · Social Layouts',
     desc: 'Thiết kế đồng bộ các ấn phẩm mạng xã hội và menu cho thương hiệu ngành F&B.',
     tags: ['Social Media', 'Menu Design', 'Branding'],
-    cover: 'NEMNEM/FULL LAYOUT 1/Artboard 1.png',
+    cover: toWebp('NEMNEM/FULL LAYOUT 1/Artboard 1.png'),
     images: [
       'FULL LAYOUT 1/Artboard 1.png', 'FULL LAYOUT 1/Artboard 2.png', 'FULL LAYOUT 1/Artboard 3.png',
       'FULL LAYOUT 2/Artboard 1.png', 'FULL LAYOUT 2/Artboard 2.png', 'FULL LAYOUT 2/Artboard 3.png',
       'Menu.png'
-    ].map(f => `NEMNEM/${f}`)
+    ].map(f => toWebp(`NEMNEM/${f}`))
   },
 
   {
@@ -488,12 +490,12 @@ const projects = [
     categoryLabel: 'Print & Packaging',
     desc: 'Product flyers, packaging design, and photoshoot direction for a Vietnamese household brand.',
     tags: ['Packaging', 'Photoshoot', 'Household'],
-    cover: 'FITIS/1V1A6096 (1).jpg',
+    cover: toWebp('FITIS/1V1A6096 (1).jpg'),
     images: [
       '1V1A6096 (1).jpg', '1V1A9355-Edit (1).jpg', '1V1A9472-Edit (1).jpg',
       'DURA - back (1).png', 'DURA - front.png',
       'Screenshot 2026-04-03 at 23.06.29.png', 'Screenshot 2026-04-03 at 23.06.47.png', 'LOGO.png'
-    ].map(f => `FITIS/${f}`)
+    ].map(f => toWebp(`FITIS/${f}`))
   },
 
   {
@@ -503,12 +505,12 @@ const projects = [
     categoryLabel: 'Print · Catalog Design',
     desc: 'Multi-page product catalog for a premium cat food brand. Designed with warm, inviting layouts.',
     tags: ['Catalog', 'Print Design', 'Pet Industry'],
-    cover: 'LUCKY KITTY/Artboard 1.png',
+    cover: toWebp('LUCKY KITTY/Artboard 1.png'),
     images: [
       'Artboard 1.png', 'Artboard 2.png', 'Artboard 3.png',
       'Artboard 9.png', 'Artboard 10.png', 'Artboard 11.png',
       'Artboard 12.png', 'Artboard 13.png', 'Artboard 14.png'
-    ].map(f => `LUCKY KITTY/${f}`)
+    ].map(f => toWebp(`LUCKY KITTY/${f}`))
   },
 
   {
@@ -518,14 +520,14 @@ const projects = [
     categoryLabel: 'Exhibition · Interactive Science',
     desc: 'Creative direction for EUREKA: An Interactive Science exhibition. Developed floor plans and designed infographics.',
     tags: ['Exhibition', 'Infographics', 'Educational'],
-    cover: 'EUREKA/Screenshot 2026-04-03 at 23.03.32.png',
+    cover: toWebp('EUREKA/Screenshot 2026-04-03 at 23.03.32.png'),
     images: [
       'eureka logo.png',
       'Screenshot 2026-04-03 at 23.03.32.png', 'Screenshot 2026-04-03 at 23.04.02.png',
       'Screenshot 2026-04-03 at 23.04.12.png', 'Screenshot 2026-04-03 at 23.04.25.png',
       'Screenshot 2026-04-03 at 23.04.33.png', 'Screenshot 2026-04-03 at 23.04.51.png',
       'Screenshot 2026-04-03 at 23.05.01.png', 'Screenshot 2026-04-03 at 23.05.26.png'
-    ].map(f => `EUREKA/${f}`)
+    ].map(f => toWebp(`EUREKA/${f}`))
   }
 ];
 
@@ -542,7 +544,7 @@ function buildCarousel(items,label,type){
     <div class="tab-section__label">${label} · ${items.length} images</div>
     <div class="carousel ${cls}" id="${cid}">
       <div class="carousel__track">
-        ${items.map(img => `<div class="carousel__item"><img src="${img}" alt="${label}" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing<br>${img}</div>'"></div>`).join('')}
+        ${items.map(img => `<div class="carousel__item"><img src="${img}" alt="${label}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing<br>${img}</div>'"></div>`).join('')}
       </div>
       <div class="carousel__nav">
         <div class="carousel__hint">${swipeIcon}<span>Swipe to browse</span></div>
@@ -571,7 +573,7 @@ function renderProjects(filter='all'){
     card.className=`project-card reveal reveal-delay-${Math.min(i%4+1,4)}`;
     card.innerHTML=`
       <div class="project-card__img">
-        <img src="${p.cover}" alt="${p.title}" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>${p.title}<br>Cover Missing</div>'">
+        <img src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>${p.title}<br>Cover Missing</div>'">
         <div class="project-card__overlay"><span>View Project →</span></div>
       </div>
       <div class="project-card__info">
@@ -634,7 +636,7 @@ function openModal(p){
       });
     });
   } else {
-    content.innerHTML=`<div class="modal__gallery">${p.images.map(img=>`<div class="modal__gallery-item"><img src="${img}" alt="Gallery Image" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing</div>'"></div>`).join('')}</div>`;
+    content.innerHTML=`<div class="modal__gallery">${p.images.map(img=>`<div class="modal__gallery-item"><img src="${img}" alt="Gallery Image" loading="lazy" decoding="async" onerror="this.outerHTML='<div class=\\'placeholder-img\\'>Image Missing</div>'"></div>`).join('')}</div>`;
   }
 
   overlay.classList.add('open');
